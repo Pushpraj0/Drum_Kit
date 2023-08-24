@@ -5,12 +5,18 @@ for (var i = 0; i < numOfTimeClicked; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
         // console.log(this);
         var buttoninnerHTML = this.innerHTML;
-        makesound(buttoninnerHTML)
+        
+        makesound(buttoninnerHTML);
+
+        animation(buttoninnerHMTL);
     });
 }
 // detecting key press
 document.addEventListener("keypress", function (event) {
     makesound(event.key);
+
+    animation(event.key);
+
 });
 
 // function to make sound
@@ -47,4 +53,11 @@ function makesound(key) {
         default: (console.log(buttoninnerHTML));
             break;
     }
+}
+function animation(currentKey) {
+    var activebutton = document.querySelector("." + currentKey);
+    activebutton.classList.add("pressed");
+    setTimeout(function () {
+        activebutton.classList.remove("pressed");
+    }, 100);
 }
